@@ -29,8 +29,11 @@ let getComputerChoice = () => {
 }
 
 let playRound = (playerSelection, computerSelection) => {
+
+    // converts the player selection to lowercase
     playerSelection = playerSelection.toLowerCase()
 
+    // checks player and computer selection to determine the winner.
     if(playerSelection === computerSelection){
         return "It's a Tie!"
     }
@@ -39,7 +42,7 @@ let playRound = (playerSelection, computerSelection) => {
             return "You Lose! Paper beats Rock"
         }
         else{
-            return "Congratulations You won!"
+            return "Congratulations You won! Rock beats Scissors"
         }
     }
     else if(playerSelection === 'scissors'){
@@ -47,7 +50,7 @@ let playRound = (playerSelection, computerSelection) => {
             return "You Lose! Rock beats Scissors"
         }
         else{
-            return "Congratulations You won!"
+            return "Congratulations You won! Scissors beats Paper"
         }
     }
     else if(playerSelection === 'paper'){
@@ -55,12 +58,28 @@ let playRound = (playerSelection, computerSelection) => {
             return "You Lose! Scissors beats Paper"
         }
         else{
-            return "Congratulations You won!"
+            return "Congratulations You won! Paper beats Rock"
         }
+    }
+    else {
+        return "Please input the appropriate selection. Thank You"
     }
 }
 
-const playerSelection = "scissors";
-const computerSelection = getComputerChoice()
-console.log(computerSelection)
-console.log(playRound(playerSelection, computerSelection))
+// player input and computer input
+let gameInput = () => {
+    let playerSelection = prompt("Welcome to Rock-Paper-Scissor Game! Type your action! 'rock', 'paper' or 'scissors'")
+    let computerSelection = getComputerChoice()
+
+    console.log(playRound(playerSelection, computerSelection))
+}
+
+// main loop for the game
+let game = () => {
+    for(let i = 0; i <= 5; i++){
+        gameInput()
+    }
+}
+
+// calling the function game
+game()
